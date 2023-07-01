@@ -9,6 +9,7 @@ part 'search_api_client.g.dart';
 @injectable
 @RestApi()
 abstract class SearchApiClient {
+  @factoryMethod
   factory SearchApiClient(Dio dio, {required String baseUrl}) =
       _SearchApiClient;
 
