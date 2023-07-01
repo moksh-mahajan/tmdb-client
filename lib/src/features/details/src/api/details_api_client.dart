@@ -46,7 +46,7 @@ class MovieDetailsResponseDto with _$MovieDetailsResponseDto {
 class TvDetailsResponseDto with _$TvDetailsResponseDto {
   const TvDetailsResponseDto._();
   const factory TvDetailsResponseDto({
-    required String id,
+    required int id,
     required String name,
     required String overview,
     String? posterPath,

@@ -80,8 +80,7 @@ class _FavoritesApiClient implements FavoritesApiClient {
       r'session_id': sessionId,
     };
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    final _data = body;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,

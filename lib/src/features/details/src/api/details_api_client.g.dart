@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_MovieDetailsResponseDtoToJson(
 _$_TvDetailsResponseDto _$$_TvDetailsResponseDtoFromJson(
         Map<String, dynamic> json) =>
     _$_TvDetailsResponseDto(
-      id: json['id'] as String,
+      id: json['id'] as int,
       name: json['name'] as String,
       overview: json['overview'] as String,
       posterPath: json['poster_path'] as String?,
