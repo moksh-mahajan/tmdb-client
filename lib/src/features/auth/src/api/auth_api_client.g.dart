@@ -10,14 +10,14 @@ _$_NewAuthTokenResponseDto _$$_NewAuthTokenResponseDtoFromJson(
         Map<String, dynamic> json) =>
     _$_NewAuthTokenResponseDto(
       success: json['success'] as bool,
-      requestToken: json['requestToken'] as String,
+      requestToken: json['request_token'] as String,
     );
 
 Map<String, dynamic> _$$_NewAuthTokenResponseDtoToJson(
         _$_NewAuthTokenResponseDto instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'requestToken': instance.requestToken,
+      'request_token': instance.requestToken,
     };
 
 _$_ValidateWithLoginRequestDto _$$_ValidateWithLoginRequestDtoFromJson(
@@ -25,7 +25,7 @@ _$_ValidateWithLoginRequestDto _$$_ValidateWithLoginRequestDtoFromJson(
     _$_ValidateWithLoginRequestDto(
       username: json['username'] as String,
       password: json['password'] as String,
-      requestToken: json['requestToken'] as String,
+      requestToken: json['request_token'] as String,
     );
 
 Map<String, dynamic> _$$_ValidateWithLoginRequestDtoToJson(
@@ -33,21 +33,21 @@ Map<String, dynamic> _$$_ValidateWithLoginRequestDtoToJson(
     <String, dynamic>{
       'username': instance.username,
       'password': instance.password,
-      'requestToken': instance.requestToken,
+      'request_token': instance.requestToken,
     };
 
 _$_ValidateWithLoginResponseDto _$$_ValidateWithLoginResponseDtoFromJson(
         Map<String, dynamic> json) =>
     _$_ValidateWithLoginResponseDto(
       success: json['success'] as bool,
-      requestToken: json['requestToken'] as String,
+      requestToken: json['request_token'] as String,
     );
 
 Map<String, dynamic> _$$_ValidateWithLoginResponseDtoToJson(
         _$_ValidateWithLoginResponseDto instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'requestToken': instance.requestToken,
+      'request_token': instance.requestToken,
     };
 
 _$_AccountResponseDto _$$_AccountResponseDtoFromJson(
@@ -65,27 +65,27 @@ Map<String, dynamic> _$$_AccountResponseDtoToJson(
 _$_NewSessionRequestDto _$$_NewSessionRequestDtoFromJson(
         Map<String, dynamic> json) =>
     _$_NewSessionRequestDto(
-      requestToken: json['requestToken'] as String,
+      requestToken: json['request_token'] as String,
     );
 
 Map<String, dynamic> _$$_NewSessionRequestDtoToJson(
         _$_NewSessionRequestDto instance) =>
     <String, dynamic>{
-      'requestToken': instance.requestToken,
+      'request_token': instance.requestToken,
     };
 
 _$_NewSessionResponseDto _$$_NewSessionResponseDtoFromJson(
         Map<String, dynamic> json) =>
     _$_NewSessionResponseDto(
       success: json['success'] as bool,
-      sessionId: json['sessionId'] as String,
+      sessionId: json['session_id'] as String,
     );
 
 Map<String, dynamic> _$$_NewSessionResponseDtoToJson(
         _$_NewSessionResponseDto instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'sessionId': instance.sessionId,
+      'session_id': instance.sessionId,
     };
 
 // **************************************************************************

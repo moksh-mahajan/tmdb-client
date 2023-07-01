@@ -13,10 +13,12 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:tmdb_client/src/di.dart' as _i7;
+import 'package:tmdb_client/src/di.dart' as _i8;
 import 'package:tmdb_client/src/features/auth/src/api/auth_api_client.dart'
     as _i5;
 import 'package:tmdb_client/src/features/auth/src/auth_repository.dart' as _i6;
+import 'package:tmdb_client/src/features/popular_movies/src/api/popular_movies_api_client.dart'
+    as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -49,8 +51,12 @@ extension GetItInjectableX on _i1.GetIt {
           storage: gh<_i4.FlutterSecureStorage>(),
           apiKey: gh<String>(instanceName: 'apiKey'),
         ));
+    gh.factory<_i7.PopularMoviesApiClient>(() => _i7.PopularMoviesApiClient(
+          gh<_i3.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseUrl'),
+        ));
     return this;
   }
 }
 
-class _$AppModule extends _i7.AppModule {}
+class _$AppModule extends _i8.AppModule {}
