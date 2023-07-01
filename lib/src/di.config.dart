@@ -13,7 +13,10 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:tmdb_client/src/di.dart' as _i5;
+import 'package:tmdb_client/src/di.dart' as _i7;
+import 'package:tmdb_client/src/features/auth/src/api/auth_api_client.dart'
+    as _i5;
+import 'package:tmdb_client/src/features/auth/src/auth_repository.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -37,8 +40,17 @@ extension GetItInjectableX on _i1.GetIt {
       () => appModule.baseUrl,
       instanceName: 'baseUrl',
     );
+    gh.factory<_i5.AuthApiClient>(() => _i5.AuthApiClient(
+          gh<_i3.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseUrl'),
+        ));
+    gh.factory<_i6.AuthRepository>(() => _i6.AuthRepository(
+          apiClient: gh<_i5.AuthApiClient>(),
+          storage: gh<_i4.FlutterSecureStorage>(),
+          apiKey: gh<String>(instanceName: 'apiKey'),
+        ));
     return this;
   }
 }
 
-class _$AppModule extends _i5.AppModule {}
+class _$AppModule extends _i7.AppModule {}
