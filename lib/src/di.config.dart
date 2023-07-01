@@ -13,14 +13,16 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:tmdb_client/src/di.dart' as _i9;
+import 'package:tmdb_client/src/di.dart' as _i10;
 import 'package:tmdb_client/src/features/auth/src/api/auth_api_client.dart'
     as _i5;
 import 'package:tmdb_client/src/features/auth/src/auth_repository.dart' as _i6;
 import 'package:tmdb_client/src/features/details/src/api/details_api_client.dart'
     as _i7;
-import 'package:tmdb_client/src/features/popular_movies/src/api/popular_movies_api_client.dart'
+import 'package:tmdb_client/src/features/favorites/src/api/favorites_api_client.dart'
     as _i8;
+import 'package:tmdb_client/src/features/popular_movies/src/api/popular_movies_api_client.dart'
+    as _i9;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,7 +59,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i3.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseUrl'),
         ));
-    gh.factory<_i8.PopularMoviesApiClient>(() => _i8.PopularMoviesApiClient(
+    gh.factory<_i8.FavoritesApiClient>(() => _i8.FavoritesApiClient(
+          gh<_i3.Dio>(),
+          baseUrl: gh<String>(instanceName: 'baseUrl'),
+        ));
+    gh.factory<_i9.PopularMoviesApiClient>(() => _i9.PopularMoviesApiClient(
           gh<_i3.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseUrl'),
         ));
@@ -65,4 +71,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i9.AppModule {}
+class _$AppModule extends _i10.AppModule {}
