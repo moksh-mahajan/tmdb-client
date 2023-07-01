@@ -13,7 +13,7 @@ import 'package:dio/dio.dart' as _i4;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:tmdb_client/src/di.dart' as _i15;
+import 'package:tmdb_client/src/di.dart' as _i16;
 import 'package:tmdb_client/src/features/auth/src/api/auth_api_client.dart'
     as _i7;
 import 'package:tmdb_client/src/features/auth/src/auth_repository.dart' as _i8;
@@ -24,14 +24,16 @@ import 'package:tmdb_client/src/features/details/src/details_repository.dart'
     as _i10;
 import 'package:tmdb_client/src/features/favorites/src/api/favorites_api_client.dart'
     as _i11;
-import 'package:tmdb_client/src/features/popular_movies/src/api/popular_movies_api_client.dart'
+import 'package:tmdb_client/src/features/favorites/src/favorites_repository.dart'
     as _i12;
-import 'package:tmdb_client/src/features/popular_movies/src/popular_movies_repository.dart'
+import 'package:tmdb_client/src/features/popular_movies/src/api/popular_movies_api_client.dart'
     as _i13;
+import 'package:tmdb_client/src/features/popular_movies/src/popular_movies_repository.dart'
+    as _i14;
 import 'package:tmdb_client/src/features/search/src/api/search_api_client.dart'
     as _i6;
 import 'package:tmdb_client/src/features/search/src/search_repository.dart'
-    as _i14;
+    as _i15;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -82,16 +84,20 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i4.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseUrl'),
         ));
-    gh.factory<_i12.PopularMoviesApiClient>(() => _i12.PopularMoviesApiClient(
+    gh.lazySingleton<_i12.FavoritesRepository>(() => _i12.FavoritesRepository(
+          api: gh<_i11.FavoritesApiClient>(),
+          apiKey: gh<String>(instanceName: 'apiKey'),
+        ));
+    gh.factory<_i13.PopularMoviesApiClient>(() => _i13.PopularMoviesApiClient(
           gh<_i4.Dio>(),
           baseUrl: gh<String>(instanceName: 'baseUrl'),
         ));
-    gh.factory<_i13.PopularMoviesRepository>(() => _i13.PopularMoviesRepository(
-          apiClient: gh<_i12.PopularMoviesApiClient>(),
+    gh.factory<_i14.PopularMoviesRepository>(() => _i14.PopularMoviesRepository(
+          apiClient: gh<_i13.PopularMoviesApiClient>(),
           configRepository: gh<_i3.ConfigRepository>(),
           apiKey: gh<String>(instanceName: 'apiKey'),
         ));
-    gh.lazySingleton<_i14.SearchRepository>(() => _i14.SearchRepository(
+    gh.lazySingleton<_i15.SearchRepository>(() => _i15.SearchRepository(
           apiKey: gh<String>(instanceName: 'apiKey'),
           apiClient: gh<_i6.SearchApiClient>(),
           configRepository: gh<_i3.ConfigRepository>(),
@@ -100,4 +106,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i15.AppModule {}
+class _$AppModule extends _i16.AppModule {}
